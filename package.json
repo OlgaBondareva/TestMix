@@ -6,7 +6,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "appium": "appium",
     "emu": "emulator @Nexus",
-    "mocha": "node node_modules/mocha/bin/mocha test/promise.js",
+    "mocha": "node node_modules/mocha/bin/mocha test/test.js -t 100000",
     "promise": "run-p -r appium emu mocha"
   },
   "repository": {
