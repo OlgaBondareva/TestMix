@@ -11,7 +11,7 @@
     "mocha-yield": "node node_modules/mocha/bin/mocha test/yield.js -t 100000 --reporter=nyan",
     "promise": "run-p -r appium emu mocha-prom",
     "cb": "run-p -r appium emu mocha-cb",
-    "yield": "run-p -r --aggregate-output appium emu mocha-yield"
+    "yield": "run-p -r appium emu mocha-yield"
   },
   "repository": {
     "type": "git",
