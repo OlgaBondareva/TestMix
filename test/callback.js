@@ -3,7 +3,7 @@ chai.should()
 let wd = require('wd')
 let serverConfig = require('../helpers/appium').local
 let capabilities = require('../helpers/caps').capabilities
-let credentials = require('../helpers/credentials')
+let creds = require('../helpers/credentials')
 
 describe('[callback]', () => {
 
@@ -18,7 +18,21 @@ describe('[callback]', () => {
               driver.elementByXPath('//android.widget.ScrollView/android.widget.LinearLayout/android.widget.TextView', (error, title) => {
                 driver.text(title, (error, titleText) => {
                   titleText.should.equal('my shows')
-                  driver.quit()
+                  driver.elementById('ru.myshows.activity:id/login_field', (error, loginField) => {
+                    driver.type(loginField, creds.login, () => {
+                      driver.elementById('ru.myshows.activity:id/password_field', (error, passField) => {
+                        driver.type(passField, creds.pass, () => {
+                          driver.elementById('ru.myshows.activity:id/login_button', (error, submit) => {
+                            driver.clickElement(submit, () => {
+                              driver.element('accessibility id', 'Open navigation drawer', (error, navDrawer) => {
+                                navDrawer.should.not.equal(undefined, `Can't login :(`)
+                              })
+                            })
+                          })
+                        })
+                      })
+                    })
+                  })
                 })
               })
             })
