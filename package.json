@@ -8,8 +8,10 @@
     "emu": "emulator @Nexus",
     "mocha-prom": "node node_modules/mocha/bin/mocha test/test.js -t 100000 --reporter=nyan",
     "mocha-cb": "node node_modules/mocha/bin/mocha test/callback.js -t 100000 --reporter=nyan",
-    "promise": "run-p -r --aggregate-output appium emu mocha-prom",
-    "cb": "run-p -r --aggregate-output appium emu mocha-cb"
+    "mocha-yield": "node node_modules/mocha/bin/mocha test/yield.js -t 100000 --reporter=nyan",
+    "promise": "run-p -r appium emu mocha-prom",
+    "cb": "run-p -r appium emu mocha-cb",
+    "yield": "run-p -r --aggregate-output appium emu mocha-yield"
   },
   "repository": {
     "type": "git",
