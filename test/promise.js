@@ -1,4 +1,3 @@
-require('colors')
 let chai = require('chai')
 let chaiAsPromised = require('chai-as-promised')
 chai.use(chaiAsPromised)
@@ -13,22 +12,10 @@ chaiAsPromised.transferPromiseness = wd.transferPromiseness
 
 let driver = wd.promiseChainRemote(serverConfig)
 
-driver.on('status', (info) => {
-    console.log(info.cyan)
-  }
-)
-driver.on('command', (eventType, command, response) => {
-    console.log(' > ' + eventType.cyan, command, (response || '').grey)
-  }
-)
-driver.on('http', (meth, path, data) => {
-    console.log(' > ' + meth.magenta, path, (data || '').grey)
-  }
-)
-
 driver
   .sleep(10000)
   .init(desiredCaps)
+  .setImplicitWaitTimeout(5000)
   .elementByXPath('//android.widget.ScrollView/android.widget.LinearLayout/android.widget.TextView')
   .text()
   .then((title) => {

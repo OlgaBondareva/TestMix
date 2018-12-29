@@ -1,4 +1,3 @@
-require('colors')
 let chai = require('chai')
 let chaiAsPromised = require('chai-as-promised')
 chai.use(chaiAsPromised)
@@ -18,22 +17,10 @@ describe('[mocha]', () => {
 
     before(() => {
       driver = wd.promiseChainRemote(serverConfig)
-      // optional extra logging
-      driver.on('status', (info) => {
-          console.log(info.cyan)
-        }
-      )
-      driver.on('command', (eventType, command, response) => {
-          console.log(' > ' + eventType.cyan, command, (response || '').grey)
-        }
-      )
-      driver.on('http', (meth, path, data) => {
-          console.log(' > ' + meth.magenta, path, (data || '').grey)
-        }
-      )
       return driver
         .sleep(20000)
         .init(desiredCaps)
+        .setImplicitWaitTimeout(5000)
     })
 
     after(() => {
@@ -58,7 +45,7 @@ describe('[mocha]', () => {
         .type(credentials.pass)
         .elementById('ru.myshows.activity:id/login_button')
         .click()
-        .elementOrNull('accessibility id', 'Open navigation drawer')
+        .element('accessibility id', 'Open navigation drawer')
         .then((element) => {
           element.should.not.equal(null, 'navigation drawer button should appear after successful sign in')
         })
