@@ -5,7 +5,7 @@ chai.should()
 let wd = require('wd')
 let serverConfig = require('../helpers/appium').local
 let desiredCaps = require('../helpers/caps').capabilities
-let credentials = require('../helpers/credentials')
+let credentials = require('../config/credentials')
 
 // enables chai assertion chaining
 chaiAsPromised.transferPromiseness = wd.transferPromiseness

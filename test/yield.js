@@ -3,7 +3,7 @@ chai.should()
 let wd = require('wd')
 let serverConfig = require('../helpers/appium').local
 let capabilities = require('../helpers/caps').capabilities
-let creds = require('../helpers/credentials')
+let creds = require('../config/credentials')
 
 //todo: need to fix this test
 describe('[yield]', () => {

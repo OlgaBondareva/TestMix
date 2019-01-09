@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="wd" type="javaScript">
+    <properties>
+      <sourceFilesUrls>
+        <item url="file://$PROJECT_DIR$/node_modules/wd" />
+      </sourceFilesUrls>
+    </properties>
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/node_modules/wd" />
+    </CLASSES>
+    <SOURCES />
+  </library>
+</component>
